@@ -8,7 +8,6 @@ const $noteList = $(".list-container .list-group");
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-// A function for getting all notes from the db
 const getNotes = () => {
   return $.ajax({
     url: "/api/notes",
@@ -16,7 +15,7 @@ const getNotes = () => {
   });
 };
 
-// A function for saving a note to the db
+
 const saveNote = (note) => {
   return $.ajax({
     url: "/api/notes",
@@ -86,7 +85,7 @@ const handleNoteView = function () {
   renderActiveNote();
 };
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+
 const handleNewNoteView = function () {
   activeNote = {};
   renderActiveNote();
@@ -108,8 +107,7 @@ const renderNoteList = (notes) => {
 
   const noteListItems = [];
 
-  // Returns jquery object for li with given text and delete button
-  // unless withDeleteButton argument is provided as false
+ 
   const create$li = (text, withDeleteButton = true) => {
     const $li = $("<li class='list-group-item'>");
     const $span = $("<span>").text(text);
@@ -148,5 +146,5 @@ $noteList.on("click", ".delete-note", handleNoteDelete);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
 
-// Gets and renders the initial list of notes
+
 getAndRenderNotes();
